@@ -145,11 +145,7 @@ const MultipleSelect: FC = () => {
       <View className="bg-white border border-emerald-100 rounded-md">
         <ScrollView
           showsVerticalScrollIndicator={false}
-          //@ts-ignore
-          contentContainerStyle={{
-            flexGrow: 1,
-            paddingBottom: keyboardHeight ?? 0,
-          }}
+          contentContainerStyle={{ flexGrow: 1, paddingBottom: 8 }}
           className="max-h-14 px-2 pt-2"
           style={{ flexShrink: 1 }}
         >
@@ -189,7 +185,10 @@ const MultipleSelect: FC = () => {
             data={combinedCharacters}
             keyExtractor={keyExtractor}
             renderItem={renderItem}
-            contentContainerClassName="pb-[250px]"
+            contentContainerStyle={{
+              //@ts-ignore
+              paddingBottom: keyboardHeight ?? 0,
+            }}
             estimatedItemSize={85}
             showsVerticalScrollIndicator={false}
             keyboardShouldPersistTaps="handled"
