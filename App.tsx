@@ -9,6 +9,7 @@ import {
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import RickAndMorty from "@/components/RickAndMorty";
+import { FC } from "react";
 
 const queryClient = new QueryClient();
 
@@ -16,7 +17,7 @@ interface CustomStatusBarProps extends StatusBarProps {
   customBackgroundColor?: string;
 }
 
-const CustomStatusBar: React.FC<CustomStatusBarProps> = ({
+const CustomStatusBar: FC<CustomStatusBarProps> = ({
   customBackgroundColor = "transparent",
   ...props
 }) => {
@@ -30,6 +31,7 @@ export default function App() {
   return (
     <View className="flex-1">
       <CustomStatusBar barStyle="light-content" translucent />
+
       <LinearGradient
         colors={["#5eead4", "#10b981"]}
         start={{ x: 0, y: 0 }}
