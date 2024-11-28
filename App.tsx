@@ -17,7 +17,7 @@ interface CustomStatusBarProps extends StatusBarProps {
 }
 
 const CustomStatusBar: React.FC<CustomStatusBarProps> = ({
-  customBackgroundColor = "white",
+  customBackgroundColor = "transparent",
   ...props
 }) => {
   return <RNStatusBar {...props} backgroundColor={customBackgroundColor} />;
@@ -25,7 +25,7 @@ const CustomStatusBar: React.FC<CustomStatusBarProps> = ({
 
 export default function App() {
   const statusBarHeight =
-    Platform.OS === "android" ? RNStatusBar.currentHeight ?? 0 : 0;
+    Platform.OS === "android" ? RNStatusBar.currentHeight : 0;
 
   return (
     <View className="flex-1">
