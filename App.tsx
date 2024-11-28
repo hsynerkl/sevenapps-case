@@ -5,6 +5,7 @@ import {
   Platform,
   StatusBar as RNStatusBar,
   StatusBarProps,
+  View,
 } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import RickAndMorty from "@/components/RickAndMorty";
@@ -27,7 +28,7 @@ export default function App() {
     Platform.OS === "android" ? RNStatusBar.currentHeight ?? 0 : 0;
 
   return (
-    <QueryClientProvider client={queryClient}>
+    <View className="flex-1">
       <CustomStatusBar barStyle="light-content" translucent />
       <LinearGradient
         colors={["#5eead4", "#10b981"]}
@@ -41,9 +42,11 @@ export default function App() {
             paddingTop: statusBarHeight + 5,
           }}
         >
-          <RickAndMorty />
+          <QueryClientProvider client={queryClient}>
+            <RickAndMorty />
+          </QueryClientProvider>
         </SafeAreaView>
       </LinearGradient>
-    </QueryClientProvider>
+    </View>
   );
 }
