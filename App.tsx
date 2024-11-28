@@ -1,6 +1,6 @@
+import "./global.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { StatusBar } from "expo-status-bar";
-import "./global.css";
 import { SafeAreaView } from "react-native";
 import { LinearGradient } from "expo-linear-gradient";
 import RickAndMorty from "@/components/RickAndMorty";
