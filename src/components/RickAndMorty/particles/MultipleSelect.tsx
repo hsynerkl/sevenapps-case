@@ -1,4 +1,4 @@
-import { FC, useEffect, useCallback } from "react";
+import { FC, useEffect, useCallback, useState } from "react";
 import {
   View,
   Text,
@@ -7,6 +7,7 @@ import {
   ActivityIndicator,
   Image,
   ScrollView,
+  Keyboard,
 } from "react-native";
 import { FlashList, ListRenderItemInfo } from "@shopify/flash-list";
 import { useCharacterStore } from "@/store/useCharacterStore";
@@ -30,6 +31,7 @@ const MultipleSelect: FC = () => {
     setIsInputFocused,
   } = useCharacterStore();
   const debouncedQuery: string = useDebounce(query, 500);
+  const [keyboardHeight, setKeyboardHeight] = useState<Number>(0);
 
   const handleSelect = useCallback(
     (character: Character): void => {
@@ -119,12 +121,35 @@ const MultipleSelect: FC = () => {
     fetchCharacters();
   }, [debouncedQuery, resetCharacters, fetchCharacters]);
 
+  useEffect(() => {
+    const keyboardDidShowListener = Keyboard.addListener(
+      "keyboardDidShow",
+      (event) => {
+        setKeyboardHeight(event.endCoordinates.height);
+      }
+    );
+    const keyboardDidHideListener = Keyboard.addListener(
+      "keyboardDidHide",
+      () => {
+        setKeyboardHeight(0);
+      }
+    );
+
+    return () => {
+      keyboardDidHideListener.remove();
+      keyboardDidShowListener.remove();
+    };
+  }, []);
   return (
     <View className={`p-2.5 bg-white ${isInputFocused && "flex-1"} `}>
       <View className="bg-white border border-emerald-100 rounded-md">
         <ScrollView
           showsVerticalScrollIndicator={false}
-          contentContainerStyle={{ flexGrow: 1, paddingBottom: 8 }}
+          //@ts-ignore
+          contentContainerStyle={{
+            flexGrow: 1,
+            paddingBottom: keyboardHeight ?? 0,
+          }}
           className="max-h-14 px-2 pt-2"
           style={{ flexShrink: 1 }}
         >
@@ -164,6 +189,7 @@ const MultipleSelect: FC = () => {
             data={combinedCharacters}
             keyExtractor={keyExtractor}
             renderItem={renderItem}
+            contentContainerClassName="pb-[250px]"
             estimatedItemSize={85}
             showsVerticalScrollIndicator={false}
             keyboardShouldPersistTaps="handled"
