@@ -33,7 +33,6 @@ interface CharacterStore {
   fetchCharacters: () => Promise<void>;
   fetchNextPage: () => Promise<void>;
   resetCharacters: () => void;
-  clearCharacters: () => void;
 }
 
 export const useCharacterStore = create<CharacterStore>((set, get) => ({
@@ -104,9 +103,5 @@ export const useCharacterStore = create<CharacterStore>((set, get) => ({
   resetCharacters: () => {
     set({ characters: [], page: 1, hasNextPage: true });
     get().fetchCharacters();
-  },
-
-  clearCharacters: () => {
-    set({ characters: [], page: 1, hasNextPage: false, isLoading: false });
   },
 }));
