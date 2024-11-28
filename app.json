@@ -1,0 +1,35 @@
+{
+  "expo": {
+    "name": "sevenapps-case",
+    "slug": "sevenapps-case",
+    "version": "1.0.0",
+    "orientation": "portrait",
+    "icon": "./src/assets/images/icon.png",
+    "userInterfaceStyle": "light",
+    "newArchEnabled": true,
+    "splash": {
+      "image": "./src/assets/images/splash-icon.png",
+      "resizeMode": "contain",
+      "backgroundColor": "#ffffff"
+    },
+    "ios": {
+      "supportsTablet": true
+    },
+    "android": {
+      "adaptiveIcon": {
+        "foregroundImage": "./src/assets/images/adaptive-icon.png",
+        "backgroundColor": "#ffffff"
+      },
+      "package": "com.hsynerkl1.sevenappscase"
+    },
+    "web": {
+      "favicon": "./src/assets/images/favicon.png"
+    },
+
+    "extra": {
+      "eas": {
+        "projectId": "f95628bc-1e99-4ec0-9e40-f08c5d8b4453"
+      }
+    }
+  }
+}
