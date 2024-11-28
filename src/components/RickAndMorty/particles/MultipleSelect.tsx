@@ -125,7 +125,7 @@ const MultipleSelect: FC = () => {
         <ScrollView
           showsVerticalScrollIndicator={false}
           contentContainerStyle={{ flexGrow: 1, paddingBottom: 8 }}
-          className="max-h-32 px-2 pt-2"
+          className="max-h-14 px-2 pt-2"
           style={{ flexShrink: 1 }}
         >
           <View className="flex-row flex-wrap gap-1">
@@ -164,7 +164,7 @@ const MultipleSelect: FC = () => {
             data={combinedCharacters}
             keyExtractor={keyExtractor}
             renderItem={renderItem}
-            estimatedItemSize={87}
+            estimatedItemSize={85}
             showsVerticalScrollIndicator={false}
             keyboardShouldPersistTaps="handled"
             ListEmptyComponent={

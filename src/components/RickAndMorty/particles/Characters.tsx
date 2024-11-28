@@ -63,6 +63,7 @@ const Characters: FC = () => {
         data={combinedCharacters}
         renderItem={renderItem}
         keyExtractor={keyExtractor}
+        estimatedItemSize={85}
         showsVerticalScrollIndicator={false}
         onEndReached={() => {
           if (hasNextPage && !isLoading) fetchNextPage();
