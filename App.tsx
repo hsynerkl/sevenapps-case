@@ -11,7 +11,7 @@ import { LinearGradient } from "expo-linear-gradient";
 import RickAndMorty from "@/components/RickAndMorty";
 import { FC } from "react";
 
-const queryClient = new QueryClient();
+export const queryClient = new QueryClient();
 
 interface CustomStatusBarProps extends StatusBarProps {
   customBackgroundColor?: string;

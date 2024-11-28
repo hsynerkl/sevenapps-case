@@ -1,8 +1,6 @@
 import { create } from "zustand";
 import axios from "axios";
-import { QueryClient } from "@tanstack/react-query";
-
-const queryClient = new QueryClient();
+import { queryClient } from "App";
 
 interface Character {
   id: number;
