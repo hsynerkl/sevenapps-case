@@ -39,7 +39,7 @@ export default function App() {
         <SafeAreaView
           className="flex-1 bg-transparent"
           style={{
-            paddingTop: statusBarHeight + 5,
+            paddingTop: statusBarHeight ?? 0,
           }}
         >
           <QueryClientProvider client={queryClient}>
